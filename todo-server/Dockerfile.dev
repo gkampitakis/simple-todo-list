@@ -1,0 +1,14 @@
+FROM node:lts-alpine
+
+ENV SERVICE Template
+ENV PORT 4000
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm","run","start:dev"]

@@ -1,0 +1,87 @@
+{
+  "name": "fastify-template-server",
+  "version": "2.0.0",
+  "description": "Template for spinning up a fastify server",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "npm run lint && jest",
+    "test:integration": "npm run lint && jest --config jest.integration.js",
+    "build": "npm run clean && tsc",
+    "start": "NODE_ENV=production node dist/index.js",
+    "start:dev": "NODE_ENV=dev ts-node-dev index.ts --poll --respawn --transpileOnly",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rm -rf dist coverage"
+  },
+  "keywords": [
+    "fastify",
+    "nodejs",
+    "server",
+    "template",
+    "typescript"
+  ],
+  "dependencies": {
+    "close-with-grace": "^1.1.0",
+    "dotenv": "8.2.0",
+    "fastify": "3.14.2",
+    "fastify-autoload": "^3.6.0",
+    "fastify-cors": "5.2.0",
+    "fastify-custom-healthcheck": "1.2.1",
+    "fastify-plugin": "^3.0.0",
+    "fastify-sensible": "^3.1.1",
+    "fastify-swagger": "^4.4.1",
+    "fluent-json-schema": "^2.0.4",
+    "pino": "6.11.2",
+    "pino-pretty": "4.7.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "14.14.37",
+    "@types/pino": "6.3.7",
+    "@types/supertest": "^2.0.10",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
+    "jest": "^26.6.3",
+    "supertest": "^6.1.3",
+    "ts-jest": "^26.5.3",
+    "ts-node-dev": "1.1.6",
+    "typescript": "4.2.4"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false
+      }
+    },
+    "verbose": true,
+    "collectCoverage": true,
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "\\.ts$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/routes.ts",
+      "!src/**/*.schema.ts",
+      "!src/**/index.ts",
+      "!src/utils/logger.ts",
+      "!src/*.types.ts",
+      "!src/*.integration.ts",
+      "!src/server.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
+  },
+  "author": "gkampitakis",
+  "license": "MIT"
+}
