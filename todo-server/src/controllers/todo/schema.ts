@@ -14,7 +14,7 @@ const ErrorSchema = S.object()
 export const getTodoSchema: Schema = {
   summary: 'Get a todo',
   description: 'Route for getting a todo by id',
-  params: S.object().prop('id', S.string().minLength(1)),
+  params: S.object().prop('id', S.string().format('uuid').minLength(1)),
   response: {
     200: TodoSchema,
     404: ErrorSchema
@@ -32,6 +32,7 @@ export const getTodosSchema: Schema = {
 export const deleteTodoSchema: Schema = {
   summary: 'Delete a todo',
   description: 'Route for deleting a todo by id',
+  params: S.object().prop('id', S.string().format('uuid').minLength(1)),
   response: {
     204: {},
     404: ErrorSchema
@@ -40,6 +41,7 @@ export const deleteTodoSchema: Schema = {
 export const updateTodoSchema: Schema = {
   summary: 'Update a todo',
   description: 'Route for updating a todo by id',
+  params: S.object().prop('id', S.string().format('uuid').minLength(1)),
   response: {
     200: TodoSchema,
     404: ErrorSchema

@@ -1,10 +1,7 @@
 import ServerInstance from './server';
-import request from 'supertest';
-import { Server } from 'http';
 import { FastifyInstance } from 'fastify';
 
-let httpServer: Server;
-let fastify: FastifyInstance;
+let server: FastifyInstance;
 
 describe('Server', () => {
   beforeEach(() => {
@@ -13,72 +10,131 @@ describe('Server', () => {
   });
 
   beforeAll(async () => {
-    const { fastify: fastify } = new ServerInstance();
+    const { fastify } = new ServerInstance();
     await fastify.ready();
-
-    httpServer = fastify.server;
+    server = fastify;
   });
 
   afterAll(async () => {
-    await fastify.close();
+    await server.close();
   });
 
-  it('Should register health check plugin', async () => {
-    const response = await request(httpServer)
-      .get('/api/health')
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .send();
+  beforeEach(async () => {
+    await server.pg.query('TRUNCATE todos');
+  });
 
-    expect(response.body).toEqual({
-      healthChecks: {
-        templateCheck: 'HEALTHY'
+  it('Should create a todo', async () => {
+    const response = await server.inject({
+      method: 'POST',
+      url: '/todo',
+      payload: {
+        todo: 'hello world'
+      }
+    });
+
+    expect(JSON.parse(response.body)).toEqual({
+      todo: 'hello world',
+      id: expect.any(String),
+      createdAt: expect.any(String)
+    });
+  });
+
+  it('Should retrieve a todo', async () => {
+    const {
+      rows: [result]
+    } = await server.pg.query<{ id: string }>(
+      `INSERT INTO todos (todo) VALUES ('test') RETURNING id`
+    );
+
+    const response = await server.inject({
+      method: 'GET',
+      url: `/todo/${result.id}`
+    });
+
+    expect(JSON.parse(response.body)).toEqual({
+      todo: 'test',
+      id: result.id,
+      createdAt: expect.any(String)
+    });
+  });
+
+  it('Should delete a todo', async () => {
+    const {
+      rows: [result]
+    } = await server.pg.query<{ id: string }>(
+      `INSERT INTO todos (todo) VALUES ('test') RETURNING id`
+    );
+
+    const response = await server.inject({
+      method: 'DELETE',
+      url: `/todo/${result.id}`
+    });
+
+    expect(response.body).toBe('');
+    expect(response.statusCode).toBe(204);
+  });
+
+  it('Should update a todo', async () => {
+    const {
+      rows: [result]
+    } = await server.pg.query<{ id: string }>(
+      `INSERT INTO todos (todo) VALUES ('test') RETURNING id`
+    );
+
+    const response = await server.inject({
+      method: 'PUT',
+      url: `/todo/${result.id}`,
+      payload: {
+        todo: 'testV2'
+      }
+    });
+
+    expect(JSON.parse(response.body)).toEqual({
+      todo: 'testV2',
+      id: result.id,
+      createdAt: expect.any(String)
+    });
+  });
+
+  it('Should return multiple todos', async () => {
+    const { rows } = await server.pg.query<{ id: string }>(
+      `INSERT INTO todos (todo) VALUES ('test'),('test2') RETURNING id`
+    );
+
+    const response = await server.inject({
+      method: 'GET',
+      url: '/todo/all'
+    });
+
+    expect(JSON.parse(response.body)).toEqual([
+      {
+        todo: 'test',
+        id: rows[0].id,
+        createdAt: expect.any(String)
       },
-      stats: expect.any(Object),
-      info: { Service: 'Template' }
-    });
+      {
+        todo: 'test2',
+        id: rows[1].id,
+        createdAt: expect.any(String)
+      }
+    ]);
   });
 
-  it('Should expose swagger docs', async () => {
-    await request(httpServer)
-      .get('/docs')
-      .expect(302);
-  });
-
-  it('Should not expose swagger docs', async () => {
-    // With this way, we force to load the new env.
-    process.env.NODE_ENV = 'production';
-    const ServerInstance = require('./server').default;
-    const { fastify } = new ServerInstance();
-    await fastify.ready();
-
-    await request(fastify.server)
-      .get('/docs')
-      .expect(404)
-      .send();
-
-    await fastify.close();
-  });
-
-  describe('Template', () => {
-    it('Should call default Route', async () => {
-      const response = await request(httpServer)
-        .get('/template')
-        .expect('Content-Type', /text/)
-        .expect(200)
-        .send();
-
-      expect(response.text).toBe('Hello World From template');
+  it('Should return 404 if todo not found', async () => {
+    const response = await server.inject({
+      method: 'GET',
+      url: '/todo/8c841194-a12a-4743-91fe-089a0519966b'
     });
 
-    it('Should call hello Route', async () => {
-      const response = await request(httpServer)
-        .get('/template/hello/test')
-        .expect('Content-Type', /text/)
-        .expect(200)
-        .send();
+    expect(response.statusCode).toBe(404);
+  });
 
-      expect(response.text).toBe('Hello Mr test');
+  it('Should return 400 if id not uuid', async () => {
+    const response = await server.inject({
+      method: 'GET',
+      url: '/todo/123132'
     });
+
+    expect(response.statusCode).toBe(400);
   });
 });
