@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS todos (
   createdAt TIMESTAMP default current_timestamp
 );
 
-CREATE UNIQUE INDEX job_index ON JOBS (id);
+CREATE UNIQUE INDEX job_index ON todos (id);

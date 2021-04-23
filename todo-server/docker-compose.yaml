@@ -7,8 +7,8 @@ services:
       context: .
       dockerfile: DockerfilePG
     environment:
-      POSTGRES_PASSWORD: pg_pass
-      POSTGRES_USER: pg_user
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: root
       POSTGRES_DB: todo_db
     ports:
       - 5432:5432
@@ -21,8 +21,8 @@ services:
       - 4000:4000
     environment:
       - PORT=4000
-      - PG_USER=pg_user
+      - PG_USER=root
       - PG_HOST=postgres
       - PG_DATABASE=todo_db
-      - PG_PASS=pg_pass
+      - PG_PASS=secret
       - PG_PORT=5432

@@ -8,10 +8,10 @@ function postgres(
   done: (err?: FastifyError) => void
 ) {
   const client = new pg.Pool({
-    user: process.env.PG_USER || 'pg_user',
+    user: process.env.PG_USER || 'root',
     host: process.env.PG_HOST || 'localhost',
     database: process.env.PG_DATABASE || 'todo_db',
-    password: process.env.PG_PASS || 'pg_pass',
+    password: process.env.PG_PASS || 'secret',
     port: parseInt(process.env.PG_PORT || '5432')
   });
 

@@ -21,7 +21,6 @@
   "exclude": [
     "node_modules",
     "dist",
-    "**/__mocks__/*",
-    "**/*.spec.ts"
+    "**/__mocks__/*"
   ]
 }
