@@ -1,7 +1,7 @@
 {
-  "name": "fastify-template-server",
+  "name": "todo-server",
   "version": "2.0.0",
-  "description": "Template for spinning up a fastify server",
+  "description": "Todo Server",
   "main": "dist/server.js",
   "scripts": {
     "test": "npm run lint && jest",
@@ -16,7 +16,7 @@
     "fastify",
     "nodejs",
     "server",
-    "template",
+    "todo-list",
     "typescript"
   ],
   "dependencies": {
@@ -30,12 +30,14 @@
     "fastify-sensible": "^3.1.1",
     "fastify-swagger": "^4.4.1",
     "fluent-json-schema": "^2.0.4",
+    "pg": "^8.6.0",
     "pino": "6.11.2",
     "pino-pretty": "4.7.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
     "@types/node": "14.14.37",
+    "@types/pg": "^7.14.11",
     "@types/pino": "6.3.7",
     "@types/supertest": "^2.0.10",
     "@typescript-eslint/eslint-plugin": "^4.18.0",

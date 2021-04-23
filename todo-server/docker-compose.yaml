@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgres
+    build:
+      context: .
+      dockerfile: DockerfilePG
+    environment:
+      POSTGRES_PASSWORD: pg_pass
+      POSTGRES_USER: pg_user
+      POSTGRES_DB: todo_db
+    ports:
+      - 5432:5432
+  todo-server:
+    container_name: todo_server
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    environment:
+      - PORT=4000
+      - PG_USER=pg_user
+      - PG_HOST=postgres
+      - PG_DATABASE=todo_db
+      - PG_PASS=pg_pass
+      - PG_PORT=5432

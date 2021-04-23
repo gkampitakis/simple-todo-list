@@ -18,12 +18,12 @@ FROM node:lts-alpine as production
 RUN apk add dumb-init
 
 ENV NODE_ENV production
-ENV SERVICE Template
+ENV SERVICE "todo-server"
 ENV PORT 4000
 
 WORKDIR /app
 
-COPY  --chown=node:node --from=build /app/release .
+COPY --chown=node:node --from=build /app/release .
 
 USER node
 

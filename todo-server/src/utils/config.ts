@@ -16,22 +16,24 @@ export default {
   },
   healthCheck: {
     exposeFailure: !isProduction,
-    info: { Service: 'Template' },
+    info: { Service: process.env.SERVICE || '' },
     path: '/api/health'
   },
   shutdownDelay: 5000
 };
 
 export const logger: LoggerOptions = {
-  level: isProduction ? 'warn' : 'debug', //Other supported "trace","debug","info","warn","error","fatal" in this order
+  level: isProduction ? 'info' : 'debug', //Other supported "trace","debug","info","warn","error","fatal" in this order
   base: {
-    name: 'Template'
+    name: process.env.SERVICE
   },
   enabled: !isTest,
-  prettyPrint: isProduction ? false : {
-    colorize: true,
-    ignore: 'hostname,pid',
-    translateTime: 'UTC:yyyy-mm-dd\'T\'HH:MM:ss',
-    levelFirst: true
-  }
+  prettyPrint: isProduction
+    ? false
+    : {
+        colorize: true,
+        ignore: 'hostname,pid',
+        translateTime: "UTC:yyyy-mm-dd'T'HH:MM:ss",
+        levelFirst: true
+      }
 };
