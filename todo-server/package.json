@@ -5,7 +5,9 @@
   "main": "dist/server.js",
   "scripts": {
     "test": "npm run lint && jest",
-    "test:integration": "npm run lint && jest --config jest.integration.js",
+    "run:integration": "npm run lint && jest --config jest.integration.js",
+    "setup:integration": "docker-compose up -d postgres",
+    "teardown:integration": "docker-compose down",
     "build": "npm run clean && tsc",
     "start": "NODE_ENV=production node dist/index.js",
     "dev": "NODE_ENV=dev ts-node-dev index.ts --poll --respawn --transpileOnly",
