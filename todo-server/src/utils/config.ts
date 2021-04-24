@@ -12,7 +12,7 @@ export default {
   },
   isProduction,
   cors: {
-    origin: false
+    origin: '*'
   },
   healthCheck: {
     exposeFailure: !isProduction,

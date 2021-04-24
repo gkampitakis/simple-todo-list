@@ -30,7 +30,7 @@ export async function updateTodo(
   reply: FastifyReply
 ) {
   const { id } = req.params;
-  const { todo } = req.body;
+  const { todo } = req.body;  
 
   const {
     rows: [result]

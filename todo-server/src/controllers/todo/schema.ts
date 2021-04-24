@@ -38,6 +38,7 @@ export const deleteTodoSchema: Schema = {
     404: ErrorSchema
   }
 };
+
 export const updateTodoSchema: Schema = {
   summary: 'Update a todo',
   description: 'Route for updating a todo by id',
@@ -47,9 +48,11 @@ export const updateTodoSchema: Schema = {
     404: ErrorSchema
   }
 };
+
 export const createTodoSchema: Schema = {
   summary: 'Create a todo',
   description: 'Route for creating a todo',
+  body: S.object().prop('todo', S.string().required()),
   response: {
     200: TodoSchema
   }
