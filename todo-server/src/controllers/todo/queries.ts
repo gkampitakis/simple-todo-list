@@ -34,6 +34,6 @@ export function getTodoQuery(id: string) {
 
 export function getTodosQuery() {
   return {
-    text: `SELECT createdat as "createdAt",id,todo FROM todos`
+    text: `SELECT createdat as "createdAt",id,todo FROM todos ORDER BY createdat DESC`
   };
 }

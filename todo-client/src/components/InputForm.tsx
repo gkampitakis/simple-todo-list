@@ -1,25 +1,50 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@material-ui/core';
+import {
+  TextField,
+  Button,
+  Card,
+  makeStyles,
+  createStyles
+} from '@material-ui/core';
 import { Todo } from '../types';
 
 interface InputFormProps {
   insert: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
+const useStyles = makeStyles(() =>
+  createStyles({
+    inputForm: {
+      marginTop: '80px',
+      width: '40%',
+      height: '20%',
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    saveBtn: {
+      width: '50%',
+      margin: 'auto'
+    },
+    inputField: {
+      width: '90%',
+      margin: 'auto'
+    }
+  })
+);
+
 export default function InputForm(props: InputFormProps) {
   const [input, setInput] = useState('');
   const { insert } = props;
+  const classes = useStyles();
 
   function handleSubmit() {
-    const todo = input;
-
     fetch('http://localhost:4000/todo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        todo
+        todo: input
       })
     })
       .then(async (response) => {
@@ -32,9 +57,23 @@ export default function InputForm(props: InputFormProps) {
   }
 
   return (
-    <>
-      <TextField value={input} onChange={(e) => setInput(e.target.value)} />
-      <Button onClick={handleSubmit}>Submit</Button>
-    </>
+    <Card className={classes.inputForm}>
+      <TextField
+        placeholder="Insert a todo item ..."
+        variant="filled"
+        className={classes.inputField}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <Button
+        className={classes.saveBtn}
+        variant="contained"
+        color="primary"
+        onClick={handleSubmit}
+        disabled={!input}
+      >
+        Save
+      </Button>
+    </Card>
   );
 }
