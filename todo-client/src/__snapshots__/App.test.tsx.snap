@@ -1,0 +1,380 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todo list Should delete item from list 1`] = `
+<body>
+  <div>
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <h6
+          class="MuiTypography-root makeStyles-title-17 MuiTypography-h6"
+        >
+          Simple Todo List 📝
+        </h6>
+      </div>
+    </header>
+    <div
+      class="makeStyles-root-15"
+    >
+      <div
+        class="MuiGrid-root makeStyles-container-16 MuiGrid-container MuiGrid-direction-xs-column"
+      >
+        <div
+          class="MuiPaper-root MuiCard-root makeStyles-inputForm-18 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root makeStyles-inputField-20"
+          >
+            <div
+              class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiFilledInput-input"
+                placeholder="Insert a todo item ..."
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-saveBtn-19 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+            data-testid="save-btn"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Save
+            </span>
+          </button>
+        </div>
+        <ul
+          class="MuiList-root makeStyles-root-21 MuiList-padding"
+        >
+          <div>
+            <li
+              class="MuiListItem-container"
+            >
+              <div
+                class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+              >
+                <div
+                  class="MuiListItemAvatar-root"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-colorPrimary"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root"
+                >
+                  <span
+                    class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    hello world
+                  </span>
+                </div>
+              </div>
+              <div
+                class="MuiListItemSecondaryAction-root"
+              >
+                <button
+                  aria-label="delete"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+                  data-testid="delete_1"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-colorError"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </li>
+            <hr
+              class="MuiDivider-root"
+            />
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Todo list Should render consistently 1`] = `
+<body>
+  <div>
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <h6
+          class="MuiTypography-root makeStyles-title-3 MuiTypography-h6"
+        >
+          Simple Todo List 📝
+        </h6>
+      </div>
+    </header>
+    <div
+      class="makeStyles-root-1"
+    >
+      <div
+        class="MuiGrid-root makeStyles-container-2 MuiGrid-container MuiGrid-direction-xs-column"
+      >
+        <div
+          class="MuiPaper-root MuiCard-root makeStyles-inputForm-4 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root makeStyles-inputField-6"
+          >
+            <div
+              class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiFilledInput-input"
+                placeholder="Insert a todo item ..."
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-saveBtn-5 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+            data-testid="save-btn"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Save
+            </span>
+          </button>
+        </div>
+        <ul
+          class="MuiList-root makeStyles-root-7 MuiList-padding"
+        >
+          <div>
+            <li
+              class="MuiListItem-container"
+            >
+              <div
+                class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+              >
+                <div
+                  class="MuiListItemAvatar-root"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-colorPrimary"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root"
+                >
+                  <span
+                    class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    hello world
+                  </span>
+                </div>
+              </div>
+              <div
+                class="MuiListItemSecondaryAction-root"
+              >
+                <button
+                  aria-label="delete"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+                  data-testid="delete_1"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-colorError"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </li>
+            <hr
+              class="MuiDivider-root"
+            />
+          </div>
+          <div>
+            <li
+              class="MuiListItem-container"
+            >
+              <div
+                class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+              >
+                <div
+                  class="MuiListItemAvatar-root"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-colorPrimary"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root"
+                >
+                  <span
+                    class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    hello world 2
+                  </span>
+                </div>
+              </div>
+              <div
+                class="MuiListItemSecondaryAction-root"
+              >
+                <button
+                  aria-label="delete"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+                  data-testid="delete_2"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-colorError"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </li>
+            <hr
+              class="MuiDivider-root"
+            />
+          </div>
+          <div>
+            <li
+              class="MuiListItem-container"
+            >
+              <div
+                class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+              >
+                <div
+                  class="MuiListItemAvatar-root"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-colorPrimary"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="MuiListItemText-root"
+                >
+                  <span
+                    class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                  >
+                    hello world 3
+                  </span>
+                </div>
+              </div>
+              <div
+                class="MuiListItemSecondaryAction-root"
+              >
+                <button
+                  aria-label="delete"
+                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+                  data-testid="delete_3"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-colorError"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </li>
+            <hr
+              class="MuiDivider-root"
+            />
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+`;

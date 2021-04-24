@@ -56,8 +56,8 @@ export default function TodoList(props: ListProps) {
   return (
     <List className={classes.root}>
       {list.map((item) => (
-        <>
-          <ListItem key={item.id}>
+        <div key={item.id}>
+          <ListItem>
             <ListItemAvatar>
               <CheckCircleIcon color={'primary'} />
             </ListItemAvatar>
@@ -66,6 +66,7 @@ export default function TodoList(props: ListProps) {
               <IconButton
                 edge="end"
                 aria-label="delete"
+                data-testid={'delete_' + item.id}
                 onClick={() => deleteTodo(item.id)}
               >
                 <DeleteIcon color="error" />
@@ -73,7 +74,7 @@ export default function TodoList(props: ListProps) {
             </ListItemSecondaryAction>
           </ListItem>
           <Divider />
-        </>
+        </div>
       ))}
     </List>
   );

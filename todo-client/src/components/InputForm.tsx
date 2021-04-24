@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   TextField,
   Button,
@@ -37,7 +37,14 @@ export default function InputForm(props: InputFormProps) {
   const { insert } = props;
   const classes = useStyles();
 
+  const enterHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   function handleSubmit() {
+    if (!input) return;
     fetch('http://localhost:4000/todo', {
       method: 'POST',
       headers: {
@@ -50,7 +57,7 @@ export default function InputForm(props: InputFormProps) {
       .then(async (response) => {
         const item = await response.json();
 
-        insert((items) => [...items, item]);
+        insert((items) => [item, ...items]);
         setInput('');
       })
       .catch(console.error);
@@ -63,6 +70,7 @@ export default function InputForm(props: InputFormProps) {
         variant="filled"
         className={classes.inputField}
         value={input}
+        onKeyDown={enterHandler}
         onChange={(e) => setInput(e.target.value)}
       />
       <Button
@@ -71,6 +79,7 @@ export default function InputForm(props: InputFormProps) {
         color="primary"
         onClick={handleSubmit}
         disabled={!input}
+        data-testid="save-btn"
       >
         Save
       </Button>
