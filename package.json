@@ -1,0 +1,24 @@
+{
+  "name": "simple-todo-list",
+  "version": "1.0.0",
+  "description": "A tutorial for creating a simple todo list.",
+  "main": "index.js",
+  "repository": "https://github.com/gkampitakis/simple-todo-list.git",
+  "author": "gkampitakis <gkabitakis@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "todo-client",
+    "todo-server"
+  ],
+  "scripts": {
+    "test": "yarn workspaces run test"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@types/node": "^16.7.13",
+    "typescript": "4.4.2"
+  }
+}

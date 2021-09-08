@@ -18,22 +18,19 @@ Todo Server uses `Postgres` as storage so you ll need an instance running for te
 ```bash
 # inside /todo-server
 
-npm install # install dependencies
+yarn run setup:integration # Creates a postgres with correct configuration
 
-npm run setup:integration # Creates a postgres with correct configuration
+yarn run run:integration # Run tests
 
-npm run run:integration # Run tests
-
-npm run teardown:integration # Shutdown postgres instance
+yarn run teardown:integration # Shutdown postgres instance
 ```
 
 ### UI client
 
 ```bash
-# inside /todo-client
-npm install # install dependencies
+yarn
 
-npm run test
+yarn test
 ```
 
 # Running locally
@@ -47,5 +44,5 @@ docker-compose up -d
 and then inside `todo-client` you can start react-app by running 
 
 ```bash
-npm run start
+yarn start
 ```

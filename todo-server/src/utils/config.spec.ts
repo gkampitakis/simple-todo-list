@@ -1,6 +1,7 @@
 describe('Configuration', () => {
   beforeEach(() => {
     jest.resetModules();
+    delete process.env.SERVICE;
   });
 
   describe('Production config', () => {
@@ -14,11 +15,11 @@ describe('Configuration', () => {
         },
         isProduction: true,
         cors: {
-          origin: false
+          origin: '*'
         },
         healthCheck: {
           exposeFailure: false,
-          info: { Service: 'Template' },
+          info: { Service: 'todo-server' },
           path: '/api/health'
         },
         shutdownDelay: 5000
@@ -27,13 +28,13 @@ describe('Configuration', () => {
 
     it('Logger', async () => {
       process.env.NODE_ENV = 'production';
-
+      process.env.SERVICE = '';
       const { logger } = await import('./config');
 
       expect(logger).toEqual({
-        level: 'warn',
+        level: 'info',
         base: {
-          name: 'Template'
+          name: ''
         },
         enabled: true,
         prettyPrint: false
@@ -52,11 +53,11 @@ describe('Configuration', () => {
         },
         isProduction: false,
         cors: {
-          origin: false
+          origin: '*'
         },
         healthCheck: {
           exposeFailure: true,
-          info: { Service: 'Template' },
+          info: { Service: 'todo-server' },
           path: '/api/health'
         },
         shutdownDelay: 5000
@@ -71,7 +72,7 @@ describe('Configuration', () => {
       expect(logger).toEqual({
         level: 'debug',
         base: {
-          name: 'Template'
+          name: 'todo-server'
         },
         enabled: true,
         prettyPrint: {

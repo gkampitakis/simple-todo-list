@@ -16,7 +16,7 @@ export default {
   },
   healthCheck: {
     exposeFailure: !isProduction,
-    info: { Service: process.env.SERVICE || '' },
+    info: { Service: process.env.SERVICE ?? 'todo-server' },
     path: '/api/health'
   },
   shutdownDelay: 5000
@@ -25,15 +25,15 @@ export default {
 export const logger: LoggerOptions = {
   level: isProduction ? 'info' : 'debug', //Other supported "trace","debug","info","warn","error","fatal" in this order
   base: {
-    name: process.env.SERVICE
+    name: process.env.SERVICE ?? 'todo-server'
   },
   enabled: !isTest,
   prettyPrint: isProduction
     ? false
     : {
-        colorize: true,
-        ignore: 'hostname,pid',
-        translateTime: "UTC:yyyy-mm-dd'T'HH:MM:ss",
-        levelFirst: true
-      }
+      colorize: true,
+      ignore: 'hostname,pid',
+      translateTime: "UTC:yyyy-mm-dd'T'HH:MM:ss",
+      levelFirst: true
+    }
 };

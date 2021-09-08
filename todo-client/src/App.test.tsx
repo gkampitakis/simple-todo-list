@@ -5,12 +5,12 @@ import {
   waitForElementToBeRemoved
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FetchMock } from 'jest-fetch-mock/types';
+// import { FetchMock } from 'jest-fetch-mock/types';
 import { fireEvent } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import App from './App';
 
-const fetchMock = fetch as FetchMock;
+// const fetchMock = fetch as FetchMock;
 
 const mockData = [
   {
